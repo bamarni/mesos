@@ -3,75 +3,62 @@ title: Apache Mesos - Newbie Guide
 layout: documentation
 ---
 
-
-# Newbie Guide
+# Newbie Contributor Guide
 
 ## Introduction
 
-The purpose of this document is to give an introduction and overall description of the contribution process for contributors new to Mesos.  This document is intended to extend the existing documentation with a focus on on-boarding contributors to the community as quickly as possible.
+The purpose of this document is to provide a first-time introduction to the process of contributing to Mesos. This guide focuses on submitting small patches via GitHub pull requests. If you'd like an introduction to the standard day-to-day workflow for advanced Mesos contributors, see our [advanced contribution guide](advanced-contribution.md).
 
-# Contribution Process Overview
+## Prerequisites
 
-Details of the contribution process can be obtained from the [submitting-a-patch](submitting-a-patch.md) document of the Mesos distribution along with the Getting Started Guidance section of this document.
-
-## Preparation and Build Environment Setup
-
-In order to complete the contribution process you will need to obtain account authorizations and install additional tooling to build the Mesos binaries. These pre-requisites are listed below:
+In order to complete the contribution process you will need the following:
 
 * Required account authorizations
-    + Apache Review Board Account
-    + Apache JIRA Account
+    + GitHub Account
 <br/><br/>
 * Required installations
     + Git
-    + RBtools
-    + GTest
-    + GLog
 
 ## Download and Build Mesos
 
-In order to begin contributing you will need to download and build the latest stable release of the Mesos distribution. Documentation on the steps to complete this process is described in the Mesos document and link listed above.
+First, download and build the latest development version of the Mesos distribution. In order to submit changes via GitHub pull requests, you need to fork the [Apache Mesos GitHub mirror](https://github.com/apache/mesos). Once you have your own fork, clone it to your local machine using Git.
+
+Once you have the Mesos source code on your local machine, you can install the necessary dependencies and build it. Instructions for this process can be found in the [Getting Started](http://mesos.apache.org/gettingstarted/) page.
+
+## Find a Problem to Solve
+
+If you already have a specific issue in mind which you want to address in the codebase, that's great! Reach out to some of the [committers](committers.md) on Mesos Slack or on the developer mailing list to discuss the improvement you'd like to make. If you want to contribute but aren't sure what to work on, you can find open issues in JIRA, our issue tracker. Asking on Mesos Slack or on the developer mailing list is a great way to find out what you might work on that could have a high impact on the community.
+
+From past experience, we have found that it's best if contributors talk to committers about their fix before writing code. This ensures that the contributor has the context necessary to make the change in a way consistent with the rest of the codebase, and helps avoid time spent on solutions which need major edits in order to get merged. Please chat with us before writing code, we'll help you design a solution!
 
 ## Make Modifications
 
-Make your intended modifications to the source code and then commit the changes to your local build repository. Changes to the source should also include test cases to exercise the modification. Details about this process are found in the Mesos document listed above and Getting Started section below.
+Once you know what issue you're going to address, go ahead and make your intended modifications to the source code and then commit the changes to your local build repository. When making changes, also consider the following:
 
-## Submit Patch
+* Does documentation need to be updated to accommodate this change? (see the `docs/` folder in the repository)
+* Do new tests need to be added? (see the `src/tests/` folder in the repository)
 
-Once changes are completed and tested submit the patch for review. This process will take the modifications from review submission to committed changes in the Mesos distribution.
+## Open a PR
+
+Once changes are completed and tested, it's time to open a PR so that they can be reviewed. Before pushing your changes to GitHub, organize the commits on your local branch. Make sure that each commit has a commit message which concisely explains the changes being made. Split your changes apart into separate commits, with similar changes collected together. This will help reviewers review your code more quickly and easily.
+
+When your local branch is clean and ready to submit, push it to your Mesos fork. You can then open a PR against the Apache Mesos GitHub repository.
 
 # Getting Started Guidance
 
-The following information will help provide additional guidance to execute the steps summarized in Contribution Process Overview described above as well as provide helpful hints when following the [submitting-a-patch](submitting-a-patch.md) document of the Mesos distribution.
-
-## Apache JIRA Account Pre-Requisite
-
-Detailed steps are provided in the Mesos documentation to obtain a JIRA account. Once you have obtained a JIRA account, ensure the additional step to request addition to the list of "contributors" is completed.
-
-## Tooling Pre-Requisites
-
-There is a set of tooling listed below that is required to be installed for the contribution process. These tools will not be described in this document and it is assumed that the reader will seek alternative references to become familiar with each of these tools outside of this document.
-
-* [Git Client](https://git-scm.com/)
-* [RBTools](https://www.reviewboard.org/docs/rbtools/dev/)
-* [GTest](https://github.com/google/googletest)
-* [GLog](https://github.com/google/glog)
+The following links provide additional guidance as you get started contributing to Apache Mesos.
 
 ## Core Libraries
 
-There are two core libraries in Mesos: *stout* and *libprocess*. *stout* is the low level operating system abstraction tooling that should be used in place of writing your own low level tools. *libprocess* is a library used to support building compatible concurrent components (see [video](https://www.youtube.com/watch?v=5EIiU6R_6KE) for an introduction to the *libprocess* library). New contributors to Mesos should become familiar with these libraries and utilize them where appropriate.  Additional documentation can be found in the following two README files: 3rdparty/libprocess/README.md and 3rdparty/stout/README.md.
-
-## Download and Build Mesos
-
-Detailed steps are provided in the [Mesos documentation](getting-started.md) to download and build Mesos. When downloading the Mesos distribution there are 2 options to obtain the Mesos source code. For contributing, ensure that the Git option is used.
+There are two core libraries in Mesos: *stout* and *libprocess*. *stout* is the low level operating system abstraction tooling that should be used in place of writing your own low level tools. *libprocess* is a library used to support building compatible concurrent components (see [video](https://www.youtube.com/watch?v=5EIiU6R_6KE) for an introduction to the *libprocess* library). New contributors to Mesos should become familiar with these libraries and utilize them where appropriate. Additional documentation can be found in the following two README files: [3rdparty/libprocess/README.md](https://github.com/apache/mesos/blob/master/3rdparty/libprocess/README.md) and [3rdparty/stout/README.md](https://github.com/apache/mesos/blob/master/3rdparty/stout/README.md).
 
 ## JIRA
 
-[JIRA](http://issues.apache.org/jira/browse/MESOS) is the issue tracking system for all bug fixes and feature additions in Mesos. When contributing to Mesos, all assignments, discussions, and resolution proposals for a specific issue should be documented as comments within the JIRA item.
+[JIRA](http://issues.apache.org/jira/browse/MESOS) is the issue tracking system for all bug fixes and feature additions in Mesos. When contributing to Mesos, all assignments, discussions, and resolution proposals for a specific issue should be documented as comments within the JIRA item. If you contribute something which is more than a trivial fix, it should probably be tracked in JIRA.
 
 ## Identifying a JIRA Issue
 
-To begin the contribution process, identify a Mesos JIRA issue that is currently unassigned. It is highly recommended to start contributing to beginner level issues and overtime move to advanced level issues. The JIRA issue-tracking system can be filtered based on labels. The following labels can be used to identify beginner level JIRA tickets:
+If you'd like to find an existing issue to work on yourself, identify a Mesos JIRA ticket that is currently unassigned. It is highly recommended to start contributing to beginner-level issues and move to more advanced issues over time. The JIRA issue-tracking system can be filtered based on labels. The following labels can be used to identify beginner-level JIRA tickets:
 
 * newbie
 * newbie++
@@ -84,10 +71,10 @@ When identifying a JIRA issue to work on, it is recommended to work on items tha
 
 There are a couple options to assign a work item: 1) create a new JIRA issue to work on or 2) identify an existing JIRA issue item to work on as described above. Whichever option is chosen there are several steps that should be followed when assigning yourself a JIRA ticket.
 
-It is important to identify a shepherd before you assign a ticket to yourself. Working with a shepherd will reveal its priority at the current time. To identify a shepherd look at the [maintainers](committers.md) file to get an idea who to ask to shepherd your JIRA issue.
-
+It is important to identify a shepherd before you assign a ticket to yourself. Working with a shepherd will reveal its priority at the current time. To identify a shepherd look at the [maintainers](committers.md) file to get an idea who to ask to shepherd your JIRA issue. You can reach out to them on Mesos Slack, on the developer mailing list, or directly via email.
 
 ## JIRA Issue Solution Proposals
+
 Once you have an assigned JIRA issue and you have identified a shepherd, it is important to discuss your proposed solution within the JIRA ticket early in the resolution process in order to get feedback from reviewers. Early discussions will help:
 
 1. ensure the solution will be scoped in a consumable fashion;
@@ -101,22 +88,18 @@ Guidelines to consider when designing a solution can be found in the [effective-
 
 ## Making Changes
 
-After completing the solution review make the source code changes, build and successfully run relevant test cases. Guidelines for these processes can be found in the [submitting-a-patch](submitting-a-patch.md) and [mesos-c++style-guide](c++-style-guide.md).
+After completing the solution review make the source code changes, build and successfully run relevant test cases. Guidelines for these processes can be found in the [Advanced Contribution Guide](advanced-contribution.md) and [Mesos C++ Style Guide](c++-style-guide.md).
 
 When creating and running test cases pay particular attention to race conditions. One recommendation is to run system tests multiple times.  Below is a sample command to repeat the test 100 times.
 
 
     sudo GLOG_v=1 ./bin/mesos-tests.sh --verbose --gtest_filter="*DOCKER*" --break-on-error --gtest_shuffle --gtest_repeat=100
 
-## Submit a Patch to the Review Board
+# Advanced JIRA Tickets
 
-Submit your patch for review after you have come to an agreement with your shepherd on the proposed solution, made the modifications and successfully ran the test cases. Make sure your shepherd is added as a "reviewer" (among others) in the review. This will ensure that your reviews get processed.
+As you gain experience contributing to Mesos you may want to tackle more advanced JIRA tickets. These items may touch multiple components within Mesos and/or may have a significant impact on the developer or user community. In these cases, a working group of stakeholders is formed to develop a design document. The initial formation of this working group will be part of the community communication resources, e.g. the re-occurring developer sync meetings, the developer email list, the IRC channel, etc. For reference, a contributor new to an advanced level work item can refer to the work done for the [inverse offer](https://issues.apache.org/jira/browse/MESOS-1592) project.
 
-When submitting a patch for review, include all testing done in the submission documentation. Follow the detailed steps found in the [submitting-a-patch](submitting-a-patch.md) document to submit a patch for review.
-
-#Advanced Level JIRA Items
-
-As you gain experience contributing to Mesos you may want to tackle more advanced level JIRA items. These items may touch multiple components within Mesos and/or may have a significant impact on the developer or user community. In these cases, a working group of stakeholders is formed to develop a design document. The initial formation of this working group will be part of the community communication resources, e.g. the re-occurring developer sync meetings, the developer email list, the IRC channel, etc. For reference, a contributor new to an advanced level work item can refer to the work done for the [inverse offer](https://issues.apache.org/jira/browse/MESOS-1592) project.
+When you begin making more complex contributions to Mesos, it will be beneficial to follow the standard code contribution workflow, which makes use of ReviewBoard instead of GitHub. You can find an introduction to this workflow in our [Advanced Contribution Guide](advanced-contribution.md).
 
 -----
 
