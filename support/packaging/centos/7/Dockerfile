@@ -76,6 +76,4 @@ RUN yum install -y ccache
 RUN sed -i -e's:.el7.centos:.el7:' /etc/rpm/macros.dist
 
 RUN useradd jenkins --shell /bin/bash --create-home
-USER jenkins
-
-RUN mkdir -p $HOME/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
+#USER jenkins

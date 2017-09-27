@@ -99,4 +99,4 @@ RUN yum install -y rpm-build redhat-rpm-config
 RUN yum install -y ccache
 
 RUN useradd jenkins --shell /bin/bash --create-home
-USER jenkins
+#USER jenkins
