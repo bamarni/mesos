@@ -13,9 +13,10 @@ License for the specific language governing permissions and limitations under
 the License.
 */
 node {
-  stage('Checkout') {
-    git branch: 'kapil/centos', changelog: false, poll: false, url: 'http://github.com/mesosphere/mesos.git'
-  }
+  checkout scm
+  // stage('Checkout') {
+  //   git branch: 'kapil/centos', changelog: false, poll: false, url: 'http://github.com/mesosphere/mesos.git'
+  // }
 
   stage('Build') {
     parallel centos7: {
